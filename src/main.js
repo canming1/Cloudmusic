@@ -8,7 +8,7 @@ import axios from 'axios'
 
 Vue.use(ElementUI)
 Vue.config.productionTip = false
-axios.defaults.baseURL = 'http://localhost:3000'
+axios.defaults.baseURL = 'https://netease-cloud-music-api-iota-pied.vercel.app/'
 Vue.prototype.$http = axios
 
 new Vue({
