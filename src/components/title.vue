@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="right-box">
-      <el-input placeholder="搜索" prefix-icon="el-icon-search" v-model="inputValue" @change="toResult"> </el-input>
+      <el-input placeholder="搜索" prefix-icon="el-icon-search" v-model="inputValue" @change="toResult" @focus="getSearchHot"> </el-input>
     </div>
   </div>
 </template>
@@ -34,6 +34,10 @@ export default {
     },
     forward() {
       this.$router.go(1)
+    },
+    async getSearchHot() {
+      const { data: res } = await this.$http.get('/search/hot')
+      console.log(res)
     }
   }
 }
@@ -44,7 +48,7 @@ export default {
   justify-content: space-between;
   padding: 0 0;
   height: 60px;
-  background-color: rgba(235, 63, 51);
+  background-color: rgba(236, 65, 65);
   width: 100%;
   .left-box {
     display: flex;
@@ -60,12 +64,6 @@ export default {
         line-height: 18px;
         margin: 10px;
         font-size: 30px;
-        color: white;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: white;
       }
     }
   }
@@ -90,6 +88,18 @@ export default {
     font-size: 30px;
     color: black;
     opacity: 0.6;
+  }
+}
+.right-box {
+  width: 200px;
+  margin-right: 10px;
+  margin-top: 10px;
+  input {
+    background-color: rgb(225, 62, 62);
+    border: none;
+    outline: none;
+    font-size: 12px;
+    color: #fff;
   }
 }
 </style>
